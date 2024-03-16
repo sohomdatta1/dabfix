@@ -44,10 +44,24 @@
             type="text"
             placeholder="Type an article name"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
             Search
           </button>
-          <p1 style="margin-left: 10px">Welcome, {{ username }}</p1>
+          <div class="dropdown" style="margin-left: 10px">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {{ username }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </div>
         </form>
       </div>
     </nav>

@@ -1,5 +1,69 @@
-<script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/codex/1.3.4/codex.min.js"></script>
-<link href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/codex/1.3.4/codex.style.min.css" rel="stylesheet">
-<body>
-    <a href="/login"><button class="cdx-button cdx-button--action-progressive cdx-button--weight-primary">Login</button></a>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Dubfix Tool</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .login-container {
+        height: 300px;
+        width: 400px;
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .tool-name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+
+      .tool-description {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .login-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .login-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="tool-name">Dubfix</div>
+      <div class="tool-description">
+        <p>
+          Our in-house version of DabFix makes populating disambiguation pages
+          easier by providing appropriate information.
+        </p>
+      </div>
+      <a href="/login"><button class="login-button">Login</button></a>
+    </div>
+  </body>
+</html>
