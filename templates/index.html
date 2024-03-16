@@ -1,61 +1,131 @@
-<script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/codex/1.3.4/codex.min.js"></script>
-<link href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/codex/1.3.4/codex.style.min.css" rel="stylesheet">
-<body>
-    <div class="container-1">
-        <h2>Which project do you want to edit {{ username }} ?</h2>
-        <select class="cdx-select language-select">
-            <!-- Use <option> and <optgroup> elements as needed. -->
-            <option value="test">test</option>
-            <option value="en">en</option>
-            <option value="bn">bn</option>
-            <option value="te">te</option>
-            <option value="simple">simple</option>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dubfix</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    />
+    <style>
+      /* Custom styles here */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .btn-action {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Dubfix</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"></ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            aria-label="Search"
+            class="form-control cdx-text-input__input"
+            type="text"
+            placeholder="Type an article name"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+          <p1 style="margin-left: 10px">Welcome, {{ username }}</p1>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="screen" id="container-1" style="margin: 20px">
+        <h2 style="margin-bottom: 10px">Choose Project:</h2>
+        <select
+          class="form-control language-select"
+          style="margin-bottom: 10px"
+        >
+          <option value="test">test</option>
+          <option value="en">en</option>
+          <option value="bn">bn</option>
+          <option value="te">te</option>
+          <option value="simple">simple</option>
         </select>
-        <button class="first-screen-action cdx-button cdx-button--action-progressive cdx-button--weight-primary">Continue</button>
+        <button class="btn btn-primary btn-action first-screen-action">
+          Continue
+        </button>
+      </div>
+      <div class="screen" id="container-2" style="display: none">
+        <h2>
+          Would you like to fix a random page or do you have a specific page in
+          mind?
+        </h2>
+        <button
+          class="btn btn-secondary btn-action second-screen-specific-page"
+        >
+          I have a specific page in mind
+        </button>
+        <button class="btn btn-secondary btn-action second-screen-lucky">
+          I'm feeling lucky!
+        </button>
+      </div>
+      <div class="screen" id="container-3" style="display: none">
+        <h2>Which page will it be?</h2>
+        <input
+          class="form-control cdx-text-input__input"
+          type="text"
+          placeholder="Type an article name"
+        />
+        <br />
+        <button class="btn btn-primary btn-action third-screen-action">
+          Let's go!
+        </button>
+      </div>
     </div>
-    <div class="container-2" style="display: none;">
-        <h2>Would you like to fix a random page or do you have a specific page in mind ?</h2>
-        <button class="second-screen-specific-page cdx-button">I have a specific page in mind</button>
-        <button class="second-screen-lucky cdx-button">I'm feeling lucky!</button>
-    </div>
-    <div class="container-3" style="display: none;">
-        <h2>Which page will it be ?</h2>
-        <div class="cdx-text-input">
-            <!-- Input element with CSS class and attributes. -->
-            <input
-              class="cdx-text-input__input"
-              type="text"
-              placeholder="Type a article name"
-            />
-        </div>
-        <br>
-        <button class="third-screen-action cdx-button">Lets go!</button>
-    </div>
-</body>
-<script>
-    window.addEventListener( 'load', () => {
-        const s1 = document.querySelector( '.container-1' );
-        const s2 = document.querySelector( '.container-2' );
-        const s3 = document.querySelector( '.container-3' );
-        let project = 'test';
-        let article = 'Queen';
-        s1.style.display = 'block';
-        document.querySelector( '.language-select' ).addEventListener( 'select', () => {
-            project = document.querySelector( '.language-select' ).value;
-        } );
-        document.querySelector( '.first-screen-action' ).addEventListener( 'click', () => {
-            s1.style.display = 'none';
-            s2.style.display = 'block';
-        } );
-        document.querySelector( '.second-screen-lucky' ).addEventListener( 'click', () => {
-            location.href = '/generatedab?proj=' + project;
-        } );
-        document.querySelector( '.second-screen-specific-page' ).addEventListener( 'click', () => {
-            s2.style.display = 'none';
-            s3.style.display = 'block';
-        } );
-        document.querySelector( '.third-screen-action' ).addEventListener( 'click', () => {
-            location.href = `/edit?proj=${project}&pagename=${ article }`
-        } );
-    } )
-</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let project = "test";
+        let article = "Queen";
+
+        $(".language-select").change(function () {
+          project = $(this).val();
+        });
+
+        $(".first-screen-action").click(function () {
+          $("#container-1").hide();
+          $("#container-2").show();
+        });
+
+        $(".second-screen-lucky").click(function () {
+          window.location.href = "/generatedab?proj=" + project;
+        });
+
+        $(".second-screen-specific-page").click(function () {
+          $("#container-2").hide();
+          $("#container-3").show();
+        });
+
+        $(".third-screen-action").click(function () {
+          article = $(".cdx-text-input__input").val();
+          window.location.href = `/edit?proj=${project}&pagename=${article}`;
+        });
+      });
+    </script>
+  </body>
+</html>

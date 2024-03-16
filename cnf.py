@@ -10,7 +10,7 @@ def load_cnf():
 
 cnf = load_cnf()
 if not os.environ.get( 'TOOLFORGE' ):
-    remote = 'localhost'
+    remote = '127.0.0.1' 
     user = cnf['client']['user']
     password = cnf['client']['password']
 else:
