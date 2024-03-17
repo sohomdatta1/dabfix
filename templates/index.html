@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dubfix</title>
+    <title>Dabfix</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -22,31 +22,9 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Dubfix</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand" href="#">Dabfix</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            aria-label="Search"
-            class="form-control cdx-text-input__input"
-            type="text"
-            placeholder="Type an article name"
-          />
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-            Search
-          </button>
           <div class="dropdown" style="margin-left: 10px">
             <button
               class="btn btn-secondary dropdown-toggle"
@@ -62,7 +40,6 @@
               <a class="dropdown-item" href="/logout">Logout</a>
             </div>
           </div>
-        </form>
       </div>
     </nav>
     <div class="container">
@@ -72,72 +49,34 @@
           class="form-control language-select"
           style="margin-bottom: 10px"
         >
+        <option value="simple">simple</option>
           <option value="test">test</option>
           <option value="en">en</option>
           <option value="bn">bn</option>
           <option value="te">te</option>
-          <option value="simple">simple</option>
         </select>
         <button class="btn btn-primary btn-action first-screen-action">
-          Continue
+          {% if username  %}
+          Fix a random page
+          {% else %}
+          Login into project
+          {% endif %}
         </button>
       </div>
-      <div class="screen" id="container-2" style="display: none">
-        <h2>
-          Would you like to fix a random page or do you have a specific page in
-          mind?
-        </h2>
-        <button
-          class="btn btn-secondary btn-action second-screen-specific-page"
-        >
-          I have a specific page in mind
-        </button>
-        <button class="btn btn-secondary btn-action second-screen-lucky">
-          I'm feeling lucky!
-        </button>
-      </div>
-      <div class="screen" id="container-3" style="display: none">
-        <h2>Which page will it be?</h2>
-        <input
-          class="form-control cdx-text-input__input"
-          type="text"
-          placeholder="Type an article name"
-        />
-        <br />
-        <button class="btn btn-primary btn-action third-screen-action">
-          Let's go!
-        </button>
-      </div>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       $(document).ready(function () {
-        let project = "test";
-        let article = "Queen";
+        let project = "simple";
 
         $(".language-select").change(function () {
           project = $(this).val();
         });
 
         $(".first-screen-action").click(function () {
-          $("#container-1").hide();
-          $("#container-2").show();
-        });
-
-        $(".second-screen-lucky").click(function () {
-          window.location.href = "/generatedab?proj=" + project;
-        });
-
-        $(".second-screen-specific-page").click(function () {
-          $("#container-2").hide();
-          $("#container-3").show();
-        });
-
-        $(".third-screen-action").click(function () {
-          article = $(".cdx-text-input__input").val();
-          window.location.href = `/edit?proj=${project}&pagename=${article}`;
+            
+            window.location.href = "/generatedab?proj=" + project;
         });
       });
     </script>

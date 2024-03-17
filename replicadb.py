@@ -1,6 +1,11 @@
 import pymysql as sql
 from cnf import config
+import os
 
 def get_conn(dbname):
-    dbconn = sql.connections.Connection(user=config['username'], password=config['password'], host=config['host'], database=f'{dbname}')
+    if os.environ.get( 'TOOLFORGE' ):
+        host = f'{dbname}.db.svc.wikimedia.cloud'
+    else:
+        host = config['host']
+    dbconn = sql.connections.Connection(user=config['username'], password=config['password'], host=host, database=f'{dbname}')
     return dbconn
