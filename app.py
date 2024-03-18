@@ -21,7 +21,7 @@ def index():
 
 @app.route('/edit')
 def edit():
-    session['proj'] == request.args.get( 'proj' )
+    session['proj'] = request.args.get( 'proj' )
     if session.get('username') and session.get('proj') == request.args.get('proj'):
         return render_template('edit.html', page=request.args.get('pagename'), proj=request.args.get('proj'), username=session.get( 'username' ) )
     return redirect(f'/tologin?referrer={request.full_path}')
