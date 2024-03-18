@@ -42,7 +42,7 @@ def get_parsed_wikitext(pagename, proj):
     }
 
 def getdabs_w(proj: str, pagename: str):
-    with get_conn(f'{proj}wiki_p') as conn:
+    with get_conn(f'{proj}wiki') as conn:
         with conn.cursor() as cursor:
             pagename=pagename.replace(' ', '_')
             cursor.execute("select page_id from page where page_title = %s and page_namespace = 0", (pagename))

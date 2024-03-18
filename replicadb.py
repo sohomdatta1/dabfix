@@ -7,5 +7,5 @@ def get_conn(dbname):
         host = f'{dbname}.db.svc.wikimedia.cloud'
     else:
         host = config['host']
-    dbconn = sql.connections.Connection(user=config['username'], password=config['password'], host=host, database=f'{dbname}')
+    dbconn = sql.connections.Connection(user=config['username'], password=config['password'], host=host, database=f'{dbname}_p')
     return dbconn
