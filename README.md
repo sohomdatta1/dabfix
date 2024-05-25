@@ -7,11 +7,8 @@ This project is a Flask-based web application that allows users to manage and ed
 
 ## Features
 
-- User authentication using OAuth
-- Fetch raw and parsed Wikipedia pages
 - Edit Wikipedia pages
-- Generate random disambiguation pages
-- RESTful API endpoints
+- Fetch disambiguation pages
 
 ## Installation
 
@@ -19,8 +16,8 @@ This project is a Flask-based web application that allows users to manage and ed
 
 - Python 3.x
 - pip(usually included with python)
-- Access to a Wikimedia Toolforge account (optional)
-- mysql database
+- Access to a Wikimedia Toolforge account
+- mysql
 
 ### Steps
 
@@ -60,10 +57,22 @@ This project is a Flask-based web application that allows users to manage and ed
       password=your_local_password(your mysql password)
       ```
 
-6. Run the Flask application:
+6. Make the tunnel, connecting the database
+    ```
+    ssh -N -v sarthakparashar@dev.toolforge.org -L localhost:3306:enwiki.analytics.db.svc.eqiad.wmflabs:3306
+    ```
+
+7. Run the Flask application:
     ```sh
     flask run
     ```
+### Database
+    - To view the mysql database, run the command
+    ```
+    mysql -h 127.0.0.1 -P 3306 -u s53922 -p
+    ```
+    - Enter the obtained password
+
 
 ## Configuration
 
@@ -77,12 +86,6 @@ The application uses environment variables to manage configuration settings. Ens
 - `TOOL_REPLICA_USER`: Database username for Toolforge (only needed on Toolforge).
 - `TOOL_REPLICA_PASSWORD`: Database password for Toolforge (only needed on Toolforge).
 - `TOOLFORGE`: Set to `True` if running on Toolforge.
-
-### Database Connection
-- To connect to database, use the following SSH command to create an SSH tunnel-
-  ```
-  ssh -N -v gopavasanth@dev.toolforge.org -L localhost:3306:simplewiki.analytics.db.svc.eqiad.wmflabs:3306
-  ```
 
 ## Usage
 
