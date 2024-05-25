@@ -20,6 +20,7 @@ This project is a Flask-based web application that allows users to manage and ed
 - Python 3.x
 - pip(usually included with python)
 - Access to a Wikimedia Toolforge account (optional)
+- mysql database
 
 ### Steps
 
