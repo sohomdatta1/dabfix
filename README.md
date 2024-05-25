@@ -44,9 +44,9 @@ This project is a Flask-based web application that allows users to manage and ed
       SECRETKEY=your_secret_key
       CONSUMER_KEY=your_consumer_key
       CONSUMER_SECRET=your_consumer_secret
-      TOOL_REPLICA_USER=your_tool_replica_user (Toolforge only)
-      TOOL_REPLICA_PASSWORD=your_tool_replica_password (Toolforge only)
-      TOOLFORGE=True  # Set to True if running on Toolforge
+      TOOL_REPLICA_USER=your_tool_replica_user (Toolforge)
+      TOOL_REPLICA_PASSWORD=your_tool_replica_password (Toolforge)
+      TOOLFORGE=True  
       ```
 
 5. Set up the database configuration:
