@@ -56,8 +56,8 @@ This project is a Flask-based web application that allows users to manage and ed
     - Create a `replica.my.cnf` file in the project root with the following content:
       ```ini
       [client]
-      user=your_local_username
-      password=your_local_password
+      user=your_local_username(your mysql username)
+      password=your_local_password(your mysql password)
       ```
 
 6. Run the Flask application:
