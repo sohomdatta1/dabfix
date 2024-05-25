@@ -1,17 +1,6 @@
 # 📦 Dabfix
 Dabfix is a Flask-based application designed to help users fix links to disambiguation pages in Wikipedia.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Introduction
 
 This project is a Flask-based web application that allows users to manage and edit Wikipedia disambiguation pages. It provides both a web interface and a set of API endpoints to interact with Wikipedia. The application supports OAuth authentication and integrates with Wikimedia's databases.
@@ -88,6 +77,12 @@ The application uses environment variables to manage configuration settings. Ens
 - `TOOL_REPLICA_PASSWORD`: Database password for Toolforge (only needed on Toolforge).
 - `TOOLFORGE`: Set to `True` if running on Toolforge.
 
+### Database Connection
+- To connect to database, use the following SSH command to create an SSH tunnel-
+  ```
+  ssh -N -v gopavasanth@dev.toolforge.org -L localhost:3306:simplewiki.analytics.db.svc.eqiad.wmflabs:3306
+  ```
+
 ## Usage
 
 ### Web Interface
@@ -114,7 +109,7 @@ The application provides several API endpoints for programmatic access:
 Fetch disambiguation links for the "Reading" page:
 ```sh
 curl http://localhost:5000/api/getdabs/simple/Reading
-
+```
 ### Contributing
 
 Contributions are welcome. Please follow the following instructions
@@ -127,6 +122,6 @@ Contributions are welcome. Please follow the following instructions
 - Push the code to the repository git push
 - Open a pull request
 
-## License
+### License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
