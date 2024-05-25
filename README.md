@@ -14,7 +14,7 @@ This project is a Flask-based web application that allows users to manage and ed
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.5 or above
 - pip(usually included with python)
 - Access to a Wikimedia Toolforge account
 - mysql
@@ -29,7 +29,7 @@ This project is a Flask-based web application that allows users to manage and ed
 
 2. Create and activate a virtual environment:
     ```sh
-    python3 -m venv venv
+    python3 -m venv venv # Also for mac
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
@@ -116,7 +116,7 @@ curl http://localhost:5000/api/getdabs/simple/Reading
 ```
 ### Contributing
 
-Contributions are welcome. Please follow the following instructions
+Contributors are welcome ! Please follow the following instructions
 
 - Fork the repository
 - Clone the forked repository
