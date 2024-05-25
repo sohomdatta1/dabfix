@@ -67,11 +67,11 @@ This project is a Flask-based web application that allows users to manage and ed
     flask run
     ```
 ### Database
-    - To view the mysql database, run the command
+- To view the mysql database, run the command
     ```
     mysql -h 127.0.0.1 -P 3306 -u s53922 -p
     ```
-    - Enter the obtained password
+- Enter the obtained password
 
 
 ## Configuration
