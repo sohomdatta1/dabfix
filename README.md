@@ -23,7 +23,7 @@ This project is a Flask-based web application that allows users to manage and ed
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/hkx05/dabfix_wikimedia.git
+    git clone https://github.com/sohomdatta1/dabfix.git
     cd dabfix_wikimedia
     ```
 
@@ -59,7 +59,7 @@ This project is a Flask-based web application that allows users to manage and ed
 
 6. Make the tunnel, connecting the database
     ```
-    ssh -N -v sarthakparashar@dev.toolforge.org -L localhost:3306:enwiki.analytics.db.svc.eqiad.wmflabs:3306
+    ssh -N -v <your_shell_username>@dev.toolforge.org -L localhost:3306:enwiki.analytics.db.svc.eqiad.wmflabs:3306
     ```
 
 7. Run the Flask application:
