@@ -55,9 +55,10 @@ def getdabs_w(proj: str, pagename: str):
                            AND pp_propname = 'disambiguation'
                            WHERE page_namespace = 0 
                            AND page_title IN 
-                           (select pl_title 
-                           from pagelinks l 
-                           where l.pl_namespace = 0 
+                           (select lt_title
+                           from pagelinks l
+                           join linktarget  on l.pl_target_id = lt_id
+                           where lt_namespace = 0 
                            and l.pl_from = %s) 
                            AND pp_propname = 'disambiguation'""", (str(pageid)))
             rows = cursor.fetchall()
