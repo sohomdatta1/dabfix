@@ -2,3 +2,4 @@ replica.my.cnf
 .env
 __pycache__
 venv
+env

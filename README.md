@@ -1,5 +1,13 @@
-# 📦 Dabfix
-Dabfix is a Flask-based application designed to help users fix links to disambiguation pages in Wikipedia.
+# DABFIX
+
+Dabfix is a Flask-based application designed to help users fix links to disambiguation pages in Wikipedia
+
+### Prerequistic
+Before we begin, ensure that you have the following installed in your computer
+- Python (version 3.5 or later)
+- pip
+- git
+___
 
 ## Introduction
 
@@ -10,111 +18,42 @@ This project is a Flask-based web application that allows users to manage and ed
 - Edit Wikipedia pages
 - Fetch disambiguation pages
 
-## Installation
+### Installation
 
-### Prerequisites
+clone this repository : `git clone https://github.com/sohomdatta1/dabfix.git` <br>
+go to the directory : `cd dabfix`
 
-- Python 3.5 or above
-- pip(usually included with python)
-- Access to a Wikimedia Toolforge account
-- mysql
-
-### Steps
-
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/sohomdatta1/dabfix.git
-    cd dabfix_wikimedia
-    ```
-
-2. Create and activate a virtual environment:
-    ```sh
-    python3 -m venv venv # Also for mac
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-3. Install the required dependencies:
-    ```sh
-    pip install -r requirements.txt
-    ```
-
-4. Set up environment variables:
-    - Create a `.env` file in the project root with the following content:
-      ```env
-      SECRETKEY=your_secret_key
-      CONSUMER_KEY=your_consumer_key
-      CONSUMER_SECRET=your_consumer_secret
-      TOOL_REPLICA_USER=your_tool_replica_user (Toolforge)
-      TOOL_REPLICA_PASSWORD=your_tool_replica_password (Toolforge)
-      TOOLFORGE=True  
-      ```
-
-5. Set up the database configuration:
-    - Create a `replica.my.cnf` file in the project root with the following content:
-      ```ini
-      [client]
-      user=your_local_username(your mysql username)
-      password=your_local_password(your mysql password)
-      ```
-
-6. Make the tunnel, connecting the database
-    ```
-    ssh -N -v <your_shell_username>@dev.toolforge.org -L localhost:3306:enwiki.analytics.db.svc.eqiad.wmflabs:3306
-    ```
-
-7. Run the Flask application:
-    ```sh
-    flask run
-    ```
-### Database
-- To view the mysql database, run the command
-    ```
-    mysql -h 127.0.0.1 -P 3306 -u s53922 -p
-    ```
-- Enter the obtained password
+Create a virtual environment : `python -m venv venv` or `python3 -m venv venv` <br>
+Activate the venv : <br>
+Windows : <br>
+- `venv\Scripts\activate`<br>
+mac :<br>
+- `source venv/bin/activate`<br>
+Linux  :
+- `source venv/bin/activate` <br>
 
 
-## Configuration
+### Install the required dependencies :
+- `pip install -r requirements.txt`
 
-The application uses environment variables to manage configuration settings. Ensure you have a `.env` file in the root directory with the necessary variables. Additionally, the `replica.my.cnf` file is used for local database credentials.
+### Running the application
 
-### Environment Variables
+Type the command : `flask run` <br>
+The application will be available at port : `http://127.0.0.1:5000/`
 
-- `SECRETKEY`: Secret key for Flask sessions.
-- `CONSUMER_KEY`: OAuth consumer key for MediaWiki.
-- `CONSUMER_SECRET`: OAuth consumer secret for MediaWiki.
-- `TOOL_REPLICA_USER`: Database username for Toolforge (only needed on Toolforge).
-- `TOOL_REPLICA_PASSWORD`: Database password for Toolforge (only needed on Toolforge).
-- `TOOLFORGE`: Set to `True` if running on Toolforge.
+**Database Connection** :
 
-## Usage
+To connect to the database, use the following SSH command to create an SSH tunnel:
 
-### Web Interface
+`ssh -N -v gopavasanth@dev.toolforge.org -L localhost:3306:simplewiki.analytics.db.svc.eqiad.wmflabs:3306`
 
-1. Navigate to the home page at `http://localhost:5000`.
-2. Log in using your MediaWiki credentials.
-3. Use the interface to view, edit, and manage Wikipedia disambiguation pages.
+**APIs** :
+- Retrieve disambiguation data:
+`http://localhost:5000/api/getdabs/simple/Reading`
+- Retrieve raw data :
+`http://localhost:5000/api/getraw/simple/Reading`
 
-### API Endpoints
-
-The application provides several API endpoints for programmatic access:
-
-- **Get Disambiguation Links**: 
-  - `GET /api/getdabs/<proj>/<path:pagename>`
-- **Get Raw Page Content**: 
-  - `GET /api/getraw/<proj>/<path:pagename>`
-- **Get Parsed Page Content**: 
-  - `GET /api/getparsed/<proj>/<path:pagename>`
-- **Edit Page Content**: 
-  - `POST /api/edit/<proj>/<path:pagename>`
-
-### Example Usage
-
-Fetch disambiguation links for the "Reading" page:
-```sh
-curl http://localhost:5000/api/getdabs/simple/Reading
-```
-### Contributing
+## contributing
 
 Contributors are welcome ! Please follow the following instructions
 
@@ -126,6 +65,15 @@ Contributors are welcome ! Please follow the following instructions
 - Push the code to the repository git push
 - Open a pull request
 
-### License
+Contributors are welcome , please follow the following steps :
+1. Fork the repository
+2. Clone the forked repository
+3. Create a new branch : `git checkout -b branchName`
+4. Make your changes
+5. Commit your changes : `git commit -m "commit message"
+6. Push the code to the repository `git push`
+7. Open a pull request
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
