@@ -9,15 +9,131 @@
       href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css"
     />
     <style>
-      /* Custom styles here */
+  
       .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
+      max-width: 800px;
+    margin-top: 20px;
+      background-color: #f5f2f2;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,.3);
+    }
+   .btn-action {
+      margin-right: 10px;
+    }
+
+  
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      overflow-y: hidden;
+    }
+
+   .navbar {
+      border-bottom: 2px solid #007bff;
+    }
+
+   .navbar-brand,
+   .navbar-nav.nav-link {
+      color: #fff;
+    }
+
+   .navbar-nav.nav-link:hover {
+      color: #031120; 
+    }
+.screen{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+   
+  .dropdown-menu {
+    background-color: #343a40;
+    color: #fff;
+    border-radius: 0.25rem;
+    opacity: 0;
+    visibility: hidden; 
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;  
+    transform-origin: top; 
+  }
+
+ .dropdown.show.dropdown-menu {
+    opacity: 1; 
+    visibility: visible; 
+    transform: translateY(0);
+  }
+
+  /* Hover effects */
+ .navbar-nav.nav-link:hover,
+ .dropdown-item:hover {
+    color: #ffce00; 
+    background-color: #343a40; 
+  }
+
+ .dropdown-item:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px #ffce00;
+  }
+
+
+    @media (max-width: 768px) {
+     .navbar-nav.nav-link {
+        display: block;
+        width: 100%;
       }
-      .btn-action {
-        margin-right: 10px;
+
+     .container {
+        padding: 10px;
       }
+
+     .btn-action {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+   
+   .form-control.language-select {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+   .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      transition:  0.3s,ease-in, transform 0.2s;
+    }
+
+   .btn-primary:hover {
+      background-color: #084586;
+      border-color: #1b74d3;
+      transform: (scale(1.2));
+    
+  
+}
+
+
+footer {
+    color: #f9f7f7;
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+ 
+    width: 100%; 
+    background-color: #343a40; 
+    transition: background-color 0.3s ease-in; 
+  }
+
+ .container:hover footer {
+    background-color: #1a1c1e; 
+    transform: 0.4s;
+    color: whitesmoke;
+   
+  }
+
+ 
     </style>
   </head>
   <body>
@@ -82,7 +198,7 @@
     </script>
   </body>
   <footer>
-    <div class="container">
+    <div class="containers">
       <p>Build with ❤️ by Soham and Gopa and Source code available on <a href="https://github.com/sohomdatta1/dabfix">GitHub</a></p>
     </div>
   </footer>
