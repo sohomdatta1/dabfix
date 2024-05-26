@@ -21,6 +21,6 @@ else:
 
 config = {
     'host': remote,
-    'username': "s53922",
-    'password': "ai5Ndjkm58nSS460"
+    'username': user,
+    'password': password
 }

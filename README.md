@@ -21,7 +21,7 @@ Dabfix is a Flask-based application designed to help users fix links to disambig
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/hkx05/dabfix_wikimedia.git
+    git clone https://github.com/sohomdatta1/dabfix_wikimedia.git
     cd dabfix_wikimedia
     ```
 
