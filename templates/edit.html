@@ -12,15 +12,172 @@
       href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css"
     />
     <style>
-      /* Custom styles here */
-      .container {
-        margin: 0 auto;
-        padding: 20px;
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: #f8f9fa;
       }
-      .btn-action {
-        margin-right: 10px;
+    
+     .navbar {
+        border-bottom: 2px solid #007bff;
+        padding: 0.5rem 1rem;
+      }
+    
+     .navbar-brand,
+     .navbar-nav.nav-link {
+        color: #fff;
+        font-weight: bold;
+      }
+    
+     .navbar-nav.nav-link:hover {
+        color: #031120; 
+      }
+    
+     .navbar-nav.active >.nav-link,
+     .show >.navbar-nav >.nav-link {
+        color: #ffce00;
+      }
+    
+     .dropdown-menu {
+        background-color: #343a40;
+        color: #fff;
+        border-radius: 0.25rem;
+      }
+    
+     .dropdown-item {
+        color: #fff;
+      }
+    
+     .dropdown-item:hover {
+        background-color: #27292b;
+        color: #fff;
+      }
+    
+     .container.screen-edits {
+        margin-top: 40px;
+        max-width: 960px;
+        padding: 20px;
+        background-color: #fbf8f8;
+        box-shadow: 0 2px 4px rgba(0,0,0,.3);
+      }
+    
+      h2, h3 {text-align: center;
+        color: #061525;
+
+
+        margin-top: 30px;
+        font-weight: 700;
+   
+      }
+    
+      pre.allwikitext {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-left: 3%;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        text-wrap: wrap;
+      }
+    
+      #skipButton {
+        background-color: rgba(1, 10, 11, 0.74);
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+    
+      #skipButton:hover {
+        background-color: #1483f1;
+        color: rgb(231, 221, 221);
+        transform: scale(1.1);
+      }
+    
+     .screen-finish,
+     .all-done {
+        padding: 20px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+    
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        margin-top: 30px;
+        padding: 20px;
+        text-align: center;
+      }footer:hover {
+    background-color: #1a1c1e; 
+    transform: 0.4s;
+    color: whitesmoke;
+    /* Change background color on hover */
+  }
+    
+      footer p a {
+        color: #fff;
+      }
+    
+      @media (max-width: 768px) {
+       
+       .navbar-nav.nav-link {
+          width: 100%;
+        }
+    
+       .navbar-toggler {
+          border-color: #fff; /* Toggler button color */
+        }
+    
+       .navbar-toggler-icon {
+          filter: invert(1); /* Invert icon color for better visibility */
+        }
+      }
+    
+      /* New CSS for enhanced hover effects and animations */
+     .navbar-nav.nav-link:hover {
+        animation: pulse 1s infinite; /* Adds a pulsing effect on hover */
+      }
+    
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+    
+     .dropdown-item:hover {
+        animation: float 1s infinite; /* Adds a floating effect on hover */
+      }
+    
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+    
+     .screen-finish:hover,
+     .all-done:hover {
+        animation: scaleUp 0.5s; /* Scales up on hover */
+      }
+    
+      @keyframes scaleUp {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.05);
+        }
       }
     </style>
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -56,8 +213,8 @@
         highlighted in red.
         <h3>Wikitext of {{ page }}:</h3>
         <pre class="allwikitext"></pre>
-        <button class="cdx-button skip-this-link">Skip this link</button>
-        <button class="cdx-button">Go back to last link</button>
+        <button class="cdx-button skip-this-link " id="skipButton">Skip this link</button>
+        <button class="cdx-button" id="skipButton">Go back to last link</button>
         <h3>Disambiguation page</h3>
         <div class="alldisambig"></div>
       </div>
