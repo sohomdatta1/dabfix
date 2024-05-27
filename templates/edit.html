@@ -213,8 +213,8 @@
         highlighted in red.
         <h3>Wikitext of {{ page }}:</h3>
         <pre class="allwikitext"></pre>
-        <button class="cdx-button skip-this-link " id="skipButton">Skip this link</button>
-        <button class="cdx-button" id="skipButton">Go back to last link</button>
+        <button class="cdx-button skip-this-link" id="skipButton">Skip this link</button>
+        <button class="cdx-button" onclick="goBackToLastLink()">Go back to last link</button>
         <h3>Disambiguation page</h3>
         <div class="alldisambig"></div>
       </div>
@@ -251,16 +251,83 @@
     </div>
   </footer>
   <script>
+    function goBackToLastLink(){
+      console.log('go back to last link')
+      bool = false; // reset the skip flag
+    const index = parseInt(location.hash.slice(1));
+    if (index > 0) {
+      location.hash = `#${index - 1}`;
+    }
+    }
     window.addEventListener("load", async () => {
+      
+      bool=false
+      // skip button functionality
+      skipButton=document.getElementById('skipButton')
+      skipButton.addEventListener(
+        "click", () => {
+          bool=true
+      //     index = parseInt(location.hash.slice(0));
+      // console.log('button clicked');
+      // location.hash = `#${index + 1}`;
+      document
+                    .querySelector(".skip-this-link")
+                    .addEventListener("click", () => {
+                      location.href = "/generatedab?proj=" + proj;
+                    });
+      // document.querySelector(".all-done").style.display = "block";
+            // document
+            //   .querySelector(".try-another-one")
+            //   .addEventListener("click", () => {
+            //     location.href = "/generatedab?proj=" + proj;
+            //   });
+      showEditor();
+        }
+      )
+      function displayErrorMessage() {
+        document.body.innerHTML = '<div class="error-message" style="text-align: center;"><h2>Oops, seems like there is an issue in the code. Try again.</h2></div>';
+      }
+
+      // go back button functionality
+    const goBackButton = document.querySelector('.cdx-button[onclick="goBackToLastLink()"]');
+    goBackButton.addEventListener("click", goBackToLastLink);
+
+      console.log("the starting of debugging")
       const queryparams = new URL(location.href).searchParams;
       const proj = queryparams.get("proj");
       const article = queryparams.get("pagename");
       const resp = await fetch(`/api/getdabs/${proj}/${article}`);
+
+      // display error message
+      if (!resp.ok) {
+        if (resp.status === 500 || resp.status === 404) {
+            displayErrorMessage();
+        } else {
+            console.error(`Error fetching data: ${resp.status} ${resp.statusText}`);
+        }
+        return;
+    }
+    // const jsondata = await resp.json();
+
       const jsondata = await resp.json();
       const articletextresp = await fetch(`/api/getraw/${proj}/${article}`);
+      // this is the actual content
       let articletext = await articletextresp.json();
       let edits = [];
       articletext = articletext["text"]["content"];
+
+      // display disambiguous text
+      let wordsInBrackets = [];
+
+        const regex = /\[\[([^\]]+)\]\]/g;
+        // articletext = articletext.replace(regex, '[[apple]]');
+        let match;
+        while ((match = regex.exec(articletext)) !== null) {
+            wordsInBrackets.push(match[1]);
+        }
+        console.log(wordsInBrackets);
+      
+      console.log(articletext.length)
       for (var i = 0; i < jsondata.length; i++) {
         let disambigRegex =
           "\\[\\[(" + jsondata[i].replaceAll("_", "[ _]") + "[^\\]]*)\\]\\]";
@@ -273,7 +340,11 @@
       document.querySelector(".allwikitext").innerHTML = articletext;
       location.hash = "#0";
       async function showEditor() {
-        const index = parseInt(location.hash.slice(1));
+        index = parseInt(location.hash.slice(0)); // this was actually 1
+        if (bool){
+          index+=1
+        }
+        // the if loop
         if (index >= jsondata.length) {
           document.querySelector(".screen-edits").style.display = "none";
           if (edits.length === 0) {
@@ -318,6 +389,7 @@
                     ).innerHTML = `Edit successfully made, <a href="https://${proj}.wikipedia.org/wiki/Special:Diff/${editJson["edit"]["newrevid"]}">view your edit here.</a>`;
                   }
                 } catch (e) {
+                  displayErrorMessage();
                   document.querySelector(
                     ".edit-end-message"
                   ).innerHTML = `Edit could not by made :( Please try again.`;
@@ -326,15 +398,24 @@
           }
         } else {
           const elem = document.getElementById(`${index}`);
-          if (!elem) {
-            location.hash = `#${index + 1}`;
-          }
-          const elemPos = document.getElementById(`${index}`).scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-            inline: "center",
-          });
-          document.getElementById(`${index}`).classList.add("disambig-in-red");
+          if (elem) {
+      elem.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+      
+      elem.classList.add("disambig-in-red");
+      
+      if (index > 0) {
+        const prevElem = document.getElementById(`${index - 1}`);
+        if (prevElem) {
+          prevElem.classList.remove("disambig-in-red");
+        }
+      }
+    } else {
+      location.hash = `#${index + 1}`;
+    }
           if (index > 0 && document.getElementById(`${index - 1}`)) {
             document
               .getElementById(`${index - 1}`)
