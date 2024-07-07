@@ -114,27 +114,17 @@
 }
 
 
-footer {
-    color: #f9f7f7;
-    margin-top: 30px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1);
- 
-    width: 100%; 
-    background-color: #343a40; 
-    transition: background-color 0.3s ease-in; 
-  }
-
- .container:hover footer {
-    background-color: #1a1c1e; 
-    transform: 0.4s;
-    color: whitesmoke;
-   
-  }
-
- 
-    </style>
+.footer-container {
+  color: #f9f7f7;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #343a40;
+}
+  </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -179,7 +169,7 @@ footer {
           {% endif %}
         </button>
       </div>
-
+    </div>
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
     <script>
@@ -198,7 +188,7 @@ footer {
     </script>
   </body>
   <footer>
-    <div class="containers">
+    <div class="footer-container">
       <p>Build with ❤️ by Sohom and Gopa and Source code available on <a href="https://github.com/sohomdatta1/dabfix">GitHub</a></p>
     </div>
   </footer>
