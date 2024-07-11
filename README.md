@@ -3,8 +3,6 @@ Dabfix is a Flask-based application designed to help users fix links to disambig
 
 ## Introduction
 
-This project is a Flask-based web application that allows users to manage and edit Wikipedia disambiguation pages. It provides both a web interface and a set of API endpoints to interact with Wikipedia. The application supports OAuth authentication and integrates with Wikimedia's databases.
-
 ## Features
 
 - Edit Wikipedia pages
@@ -23,7 +21,7 @@ This project is a Flask-based web application that allows users to manage and ed
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/sohomdatta1/dabfix.git
+    git clone https://github.com/sohomdatta1/dabfix_wikimedia.git
     cd dabfix_wikimedia
     ```
 
@@ -59,7 +57,7 @@ This project is a Flask-based web application that allows users to manage and ed
 
 6. Make the tunnel, connecting the database
     ```
-    ssh -N -v <your_shell_username>@dev.toolforge.org -L localhost:3306:enwiki.analytics.db.svc.eqiad.wmflabs:3306
+    ssh -N -v sarthakparashar@dev.toolforge.org -L localhost:3306:enwiki.analytics.db.svc.eqiad.wmflabs:3306
     ```
 
 7. Run the Flask application:
@@ -97,7 +95,28 @@ The application uses environment variables to manage configuration settings. Ens
 
 ### API Endpoints
 
+<<<<<<< HEAD
+Contributors are welcome ! Please follow the following instructions
+
+- Fork the repository
+- Clone the forked repository
+- Create a new branch : git checkout -b branchName
+- Make your changes
+- Commit your changes : git commit -m "commit message"
+- Push the code to the repository git push
+- Open a pull request
+
+Contributors are welcome , please follow the following steps :
+1. Fork the repository
+2. Clone the forked repository
+3. Create a new branch : `git checkout -b branchName`
+4. Make your changes
+5. Commit your changes : `git commit -m "commit message"`
+6. Push the code to the repository `git push`
+7. Open a pull request
+=======
 The application provides several API endpoints for programmatic access:
+>>>>>>> c20e847 (bugfix: skip button)
 
 - **Get Disambiguation Links**: 
   - `GET /api/getdabs/<proj>/<path:pagename>`
